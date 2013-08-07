@@ -125,8 +125,6 @@
 		6FFD9E66157EA91F00EBCB0D /* 19-gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD9E64157EA91F00EBCB0D /* 19-gear@2x.png */; };
 		861222F8179EC3CE008D1FEF /* NKTreatmentWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 861222F6179EC3CE008D1FEF /* NKTreatmentWebView.m */; };
 		861222F9179EC3CE008D1FEF /* NKTreatmentWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 861222F7179EC3CE008D1FEF /* NKTreatmentWebView.xib */; };
-		9408921117A71545003B5E45 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 9408921017A71545003B5E45 /* plus.png */; };
-		9408921317A7154B003B5E45 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9408921217A7154B003B5E45 /* plus@2x.png */; };
 		941960C717A0912D0068E04B /* SafetyPlanEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 941960C617A0912D0068E04B /* SafetyPlanEntry.m */; };
 		941960CB17A0A9240068E04B /* NKSafetyPlansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941960C917A0A9240068E04B /* NKSafetyPlansViewController.m */; };
 		941960CC17A0A9240068E04B /* NKSafetyPlansViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941960CA17A0A9240068E04B /* NKSafetyPlansViewController.xib */; };
@@ -163,6 +161,7 @@
 		94DCFB7217A60B5E003DC372 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 94DCFB6E17A60B5E003DC372 /* location.png */; };
 		94DCFB7317A60B5E003DC372 /* NKTreatmentChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DCFB7017A60B5E003DC372 /* NKTreatmentChoiceViewController.m */; };
 		94DCFB7417A60B5E003DC372 /* NKTreatmentChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DCFB7117A60B5E003DC372 /* NKTreatmentChoiceViewController.xib */; };
+		94F30B7A17B1E5F700AF1FF7 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 94F30B7917B1E5F700AF1FF7 /* plus.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -427,8 +426,6 @@
 		861222F5179EC3CE008D1FEF /* NKTreatmentWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKTreatmentWebView.h; sourceTree = "<group>"; };
 		861222F6179EC3CE008D1FEF /* NKTreatmentWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKTreatmentWebView.m; sourceTree = "<group>"; };
 		861222F7179EC3CE008D1FEF /* NKTreatmentWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKTreatmentWebView.xib; sourceTree = "<group>"; };
-		9408921017A71545003B5E45 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus.png; path = ../../../../../../Desktop/plus.png; sourceTree = "<group>"; };
-		9408921217A7154B003B5E45 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plus@2x.png"; path = "../../../../../../Desktop/plus@2x.png"; sourceTree = "<group>"; };
 		941960C517A0912D0068E04B /* SafetyPlanEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyPlanEntry.h; sourceTree = "<group>"; };
 		941960C617A0912D0068E04B /* SafetyPlanEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyPlanEntry.m; sourceTree = "<group>"; };
 		941960C817A0A9240068E04B /* NKSafetyPlansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKSafetyPlansViewController.h; sourceTree = "<group>"; };
@@ -484,6 +481,7 @@
 		94DCFB6F17A60B5E003DC372 /* NKTreatmentChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKTreatmentChoiceViewController.h; sourceTree = "<group>"; };
 		94DCFB7017A60B5E003DC372 /* NKTreatmentChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKTreatmentChoiceViewController.m; sourceTree = "<group>"; };
 		94DCFB7117A60B5E003DC372 /* NKTreatmentChoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NKTreatmentChoiceViewController.xib; sourceTree = "<group>"; };
+		94F30B7917B1E5F700AF1FF7 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus.png; path = ../../../Desktop/plus.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -807,8 +805,7 @@
 		6FBE3BDF15598755003F4F81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9408921217A7154B003B5E45 /* plus@2x.png */,
-				9408921017A71545003B5E45 /* plus.png */,
+				94F30B7917B1E5F700AF1FF7 /* plus.png */,
 				6FFD9E63157EA91F00EBCB0D /* 19-gear.png */,
 				6FFD9E64157EA91F00EBCB0D /* 19-gear@2x.png */,
 				6FBE3BE11559875F003F4F81 /* brain.png */,
@@ -1146,8 +1143,7 @@
 				94DCFB6D17A60B55003DC372 /* NKLiveChatChoiceViewController.xib in Resources */,
 				94DCFB7217A60B5E003DC372 /* location.png in Resources */,
 				94DCFB7417A60B5E003DC372 /* NKTreatmentChoiceViewController.xib in Resources */,
-				9408921117A71545003B5E45 /* plus.png in Resources */,
-				9408921317A7154B003B5E45 /* plus@2x.png in Resources */,
+				94F30B7A17B1E5F700AF1FF7 /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

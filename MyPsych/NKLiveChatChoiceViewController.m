@@ -8,13 +8,22 @@
 
 #import "NKLiveChatChoiceViewController.h"
 
-
-@interface NKLiveChatChoiceViewController ()
+@interface NKLiveChatChoiceViewController () {
+    NSArray *dataSource;
+    
+    NSString *titleKey;
+    NSString *subtitleKey;
+    NSString *imgNameKey;
+    NSString *urlKey;
+    
+    UIColor *myPsychBlue;
+    
+}
 
 @end
 
 @implementation NKLiveChatChoiceViewController
-@synthesize myLiveChatWebView;
+@synthesize myLiveChatWebView = _myLiveChatWebView;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -30,22 +39,33 @@
 {
     [super viewDidLoad];
     
-    self.title      =  @"Life Line";
+    self.title  = @"Life Line";
+    titleKey    = @"title";
+    subtitleKey = @"subtitle";
+    imgNameKey  = @"imgName";
+    urlKey      = @"url";
     
-    NKSupport       = [[NSMutableArray alloc]initWithObjects:@"1 (800) 273-8255",@"Live Chat", nil];
-   
+    myPsychBlue = [UIColor colorWithRed:46.0/255.0
+                                  green:96.0/255.0
+                                   blue:255.0/255.0
+                                  alpha:.9];
+    
+    NSArray *keys = @[titleKey, subtitleKey, imgNameKey, urlKey];
+    
+    NSDictionary *row1 = [[NSDictionary alloc] initWithObjects:@[@"1 (800) 273-8255",
+                                                                 @"National Suicide Prevention Hotline",
+                                                                 @"call.png",
+                                                                 @"tel://18002738255"]
+                                                       forKeys:keys];
+    
+    NSDictionary *row2 = [[NSDictionary alloc] initWithObjects:@[@"Live Chat",
+                                                                 @"Lifeline crisis chat",
+                                                                 @"chat.png",
+                                                                 @"http://www.suicidepreventionlifeline.org/GetHelp/LifelineChat.aspx"]
+                                                       forKeys:keys];
 
-    NKSubtitle      = [[NSMutableArray alloc]initWithObjects:@"National Suicide Prevention   Hotline",@"Lifeline           crisis chat", nil];
-
-    NKSubtitle = [[NSMutableArray alloc]initWithObjects:@"National Suicide Prevention Hotline",@"Lifeline crisis chat", nil];
-
-    
-    UIImage *Call = [UIImage imageNamed:@"call.png"];
-    UIImage *chat = [UIImage imageNamed:@"chat.png"];
-    NKImages      = [[NSMutableArray alloc]initWithObjects: Call, chat ,nil];
-    
-    
-    
+    NSArray *section1 = @[row1, row2];
+    dataSource        = @[section1];
     
 
     // Uncomment the following line to preserve selection between presentations.
@@ -65,102 +85,60 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
     // Return the number of sections.
-    return 1;
+    return dataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [NKSupport count];
+    NSArray *currentSection = [dataSource objectAtIndex:section];
+    return currentSection.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cell";
-    UITableViewCell  *cell          = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-                            cell    = [[UITableViewCell alloc] initWithStyle:                                                       UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    
-   
     
     
     // Configure the cell...
+    NSArray *currentSection  = [dataSource objectAtIndex:indexPath.section];
+    NSDictionary *currentRow = [currentSection objectAtIndex:indexPath.row];
     
-    cell.textLabel.text       = [NKSupport objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [ NKSubtitle objectAtIndex:indexPath.row];
-    cell.imageView.image      = [NKImages  objectAtIndex:indexPath.row];
+    cell.textLabel.text       = [currentRow objectForKey:titleKey];
+    cell.detailTextLabel.text = [currentRow objectForKey:subtitleKey];
+    cell.imageView.image      = [UIImage imageNamed:[currentRow objectForKey:imgNameKey]];
     cell.accessoryType        = UITableViewCellAccessoryDisclosureIndicator;
+
+    
+    cell.detailTextLabel.textColor = myPsychBlue;
+    
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        NSURLRequest *myRequest   = nil;
-        NKTreatmentWebView *temp  = [[NKTreatmentWebView alloc] initWithNibName:
-                                        @"NKTreatmentWebView" bundle:[NSBundle mainBundle]];
-        self.myLiveChatWebView    = temp;
     
-    if([[NKSupport objectAtIndex:indexPath.row ] isEqualToString :@"1 (800) 273-8255" ])
-    {
-                    NSURL *myUrl  = [ NSURL URLWithString:@"tel://18002738255"];
-                    myRequest     = [ NSURLRequest requestWithURL:myUrl];
-            
-            [self.myLiveChatWebView.myWebView loadRequest:myRequest];
-    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    else
-    {
-                    NSURL *myUrl  = [ NSURL URLWithString:@"http://www.suicidepreventionlifeline.org/GetHelp/LifelineChat.aspx"];
-                        myRequest = [ NSURLRequest requestWithURL:myUrl];
-        
-    }
+    NSURLRequest *myRequest;
+    NSURL *myUrl;
+    _myLiveChatWebView = [[NKTreatmentWebView alloc] initWithNibName:@"NKTreatmentWebView"
+                                                              bundle:[NSBundle mainBundle]];
+    
+    NSArray *currentSection  = [dataSource objectAtIndex:indexPath.section];
+    NSDictionary *currentRow = [currentSection objectAtIndex:indexPath.row];
+    
+    myUrl     = [NSURL URLWithString:[currentRow objectForKey:urlKey]];
+    myRequest = [NSURLRequest requestWithURL:myUrl];
     
     [self.navigationController pushViewController:self.myLiveChatWebView animated:YES];
-    [self.myLiveChatWebView.myWebView loadRequest:myRequest];
-    
+    [_myLiveChatWebView.myWebView loadRequest:myRequest];
 
 }
        

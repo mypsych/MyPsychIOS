@@ -11,11 +11,6 @@
 
 @interface NKLiveChatChoiceViewController : UITableViewController
 
-{ 
-    NSMutableArray *NKSupport;
-    NSMutableArray *NKSubtitle;
-    NSMutableArray *NKImages;
-}
 
 @property(nonatomic,retain)IBOutlet NKTreatmentWebView *myLiveChatWebView;
 @end
