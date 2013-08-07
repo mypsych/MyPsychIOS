@@ -8,16 +8,22 @@
 
 #import "NKTreatmentChoiceViewController.h"
 
+
+
 @interface NKTreatmentChoiceViewController ()
 {
+    NSArray *dataSource;
+    
     NSString *sectionName;
+    NSString *titleKey;
+    NSString *imgNameKey;
+    NSString *urlKey;
 }
 
 @end
 
 @implementation NKTreatmentChoiceViewController
-@synthesize myTreatmentWebView;
-
+@synthesize myTreatmentWebView = _myTreatmentWebView;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -34,67 +40,79 @@
     
     self.title =  @"Find Help";
     
-    NKSamhsa   = [[NSMutableArray alloc]initWithObjects:@"Substance Abuse Locator",@"Mental Health Locator", nil];
+    titleKey    = @"title";
+    imgNameKey  = @"imgName";
+    urlKey      = @"url";
     
-    NKOther    = [[NSMutableArray alloc]initWithObjects:@"Psychology Today",@"Suicide Prevention Lifeline Locator", nil];
+    NSArray *keys = @[titleKey, imgNameKey, urlKey];
     
-
+    NSDictionary *row1 = [[NSDictionary alloc] initWithObjects:@[@"Substance Abuse Locator",
+                                                                @"location.png",
+                                                                @"http://findtreatment.samhsa.gov/TreatmentLocator/faces/quickSearch.jspx"]
+                                                       forKeys:keys];
     
-    [UIImage imageNamed:@"location.png"];
+    NSDictionary *row2 = [[NSDictionary alloc] initWithObjects:@[@"Mental Health Locator",
+                                                                @"location.png",
+                                                                @"http://findtreatment.samhsa.gov/MHTreatmentLocator/faces/quickSearch.jspx"]
+                                                       forKeys:keys];
+    
+    NSDictionary *row3 = [[NSDictionary alloc] initWithObjects:@[@"Psychology Today",
+                                                                @"location.png",
+                                                                @"http://m.therapists.psychologytoday.com/rms/prof_search.php"]
+                                                       forKeys:keys];
+    NSDictionary *row4 = [[NSDictionary alloc] initWithObjects:@[@"Suicide Prevention Lifeline",
+                                                                @"location.png",
+                                                                @"http://www.suicidepreventionlifeline.org/GetInvolved/Locator"]
+                                                       forKeys:keys];
+    
+    NSArray *section1 = @[row1, row2];
+    NSArray *section2 = @[row3, row4];
+    dataSource        = @[section1, section2];
+    
     [super viewDidLoad];
     
-   
-
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return dataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#
+
     // Return the number of rows in the section.
-    return [NKSamhsa count];
+    NSArray *currentsection = [dataSource objectAtIndex:section];
+    return currentsection.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell           = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil)
-        {
-                                cell= [[UITableViewCell alloc]
-                                        initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
+    static NSString *CellIdentifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
     
     // Configure the cell...
     
-    if (indexPath.section == 0) {
-        cell.textLabel.text    = [NKSamhsa objectAtIndex:indexPath.row];
-    }
-  else {
-        cell.textLabel.text    = [NKOther objectAtIndex:indexPath.row];
-    }
     
-        cell.accessoryType     = UITableViewCellAccessoryDisclosureIndicator;
-        cell.imageView.image   = [UIImage imageNamed:@"location.png"];
+    NSArray *currentSection  = [dataSource objectAtIndex:indexPath.section];
+    NSDictionary *currentRow = [currentSection objectAtIndex:indexPath.row];
+    
+        cell.textLabel.text  = [currentRow objectForKey:titleKey];
+        cell.imageView.image = [UIImage imageNamed:[currentRow objectForKey:imgNameKey]];
+        cell.accessoryType   = UITableViewCellAccessoryDisclosureIndicator;
     
         return cell;
 
@@ -102,47 +120,24 @@
     
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSURLRequest *myRequest   = nil;
-    NKTreatmentWebView *temp  = [[NKTreatmentWebView alloc] initWithNibName:
-
-                                @"NKTreatmentWebView" bundle:[NSBundle mainBundle]];
-    self.myTreatmentWebView   = temp;
-        
-    if(indexPath.section ==0)
-    {
-        if([[NKSamhsa objectAtIndex:indexPath.row ] isEqualToString :@"Substance Abuse Locator" ])
-        {
-            NSURL *myUrl    = [ NSURL URLWithString:@"http://findtreatment.samhsa.gov/TreatmentLocator/faces/quickSearch.jspx"];
-            myRequest       = [ NSURLRequest requestWithURL:myUrl];
-        }
     
-    else if([[NKSamhsa objectAtIndex:indexPath.row ] isEqualToString :@"Mental Health Locator" ])
-        {
-            NSURL *myUrl    = [ NSURL URLWithString:@"http://findtreatment.samhsa.gov/MHTreatmentLocator/faces/quickSearch.jspx"];
-            myRequest       = [ NSURLRequest requestWithURL:myUrl];
-        }
-    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    else if([[NKOther objectAtIndex:indexPath.row] isEqualToString :@"Suicide Prevention Lifeline Locator"])
-    {
-            NSURL *myUrl    = [ NSURL URLWithString:@"http://www.suicidepreventionlifeline.org/GetInvolved/Locator"];
-            myRequest       = [ NSURLRequest requestWithURL:myUrl];
-    }
-
-    else if([[NKOther objectAtIndex:indexPath.row] isEqualToString :@"Psychology Today"])
-    {
-            NSURL *myUrl    = [ NSURL URLWithString:@"http://m.therapists.psychologytoday.com/rms/prof_search.php"];
-            myRequest       = [ NSURLRequest requestWithURL:myUrl];
-        
-    }
-
-        [self.navigationController pushViewController:self.myTreatmentWebView animated:YES];
-        [self.myTreatmentWebView.myWebView loadRequest:myRequest];
+    NSURLRequest *myRequest;
+    NSURL *myUrl;
+    _myTreatmentWebView = [[NKTreatmentWebView alloc] initWithNibName:@"NKTreatmentWebView"
+                                                               bundle:[NSBundle mainBundle]];
+    
+    NSArray *currentSection  = [dataSource objectAtIndex:indexPath.section];
+    NSDictionary *currentRow = [currentSection objectAtIndex:indexPath.row];
+    
+    myUrl     = [NSURL URLWithString:[currentRow objectForKey:urlKey]];
+    myRequest = [NSURLRequest requestWithURL:myUrl];
+   
+    [self.navigationController pushViewController:_myTreatmentWebView animated:YES];
+    [_myTreatmentWebView.myWebView loadRequest:myRequest];
 }
                                                 
-        
-
-
 
  -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -153,63 +148,12 @@
             sectionName = @"SAMHSA ";
             break;
         case 1:
-            sectionName = @"OTHER";
+            sectionName = @"Other";
             break;
             // ...
     }
     return sectionName;
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // Navigation logic may go here. Create and push another view controller.
-//    /*
-//     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-//     // ...
-//     // Pass the selected object to the new view controller.
-//     [self.navigationController pushViewController:detailViewController animated:YES];
-//     */
-//}
 
 
 @end

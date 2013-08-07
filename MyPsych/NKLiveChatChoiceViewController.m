@@ -17,7 +17,6 @@
     NSString *urlKey;
     
     UIColor *myPsychBlue;
-    
 }
 
 @end

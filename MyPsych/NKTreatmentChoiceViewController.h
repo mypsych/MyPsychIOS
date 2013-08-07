@@ -10,12 +10,7 @@
 #import "NKTreatmentWebView.h"
 
 @interface NKTreatmentChoiceViewController : UITableViewController
-{
-    NSMutableArray *NKSamhsa;
-    NSMutableArray *NKOther;
-  
-    
-}
+
 @property(nonatomic,retain)IBOutlet NKTreatmentWebView *myTreatmentWebView;
 
 @end
