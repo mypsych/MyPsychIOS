@@ -1,0 +1,70 @@
+//
+//  MySlider.m
+//  MyPsyche
+//
+//  Created by James Lockwood on 5/3/12.
+//  Copyright (c) 2012 Apps in House. All rights reserved.
+//
+
+#import "MySlider.h"
+#import "ProfileDataManager.h"
+
+@implementation MySlider
+@synthesize valueChanged   = _valueChanged;
+@synthesize valueLabel     = _valueLabel;
+@synthesize nameLabel      = _nameLabel;
+@synthesize nameButton     = _nameButton;
+@synthesize hasBeenTouched = _hasBeenTouched;
+@synthesize remainsBlue    = _remainsBlue;
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.valueChanged   = NO;
+    self.hasBeenTouched = NO;
+    self.remainsBlue    = NO;
+}
+
+- (void)setValue:(float)value animated:(BOOL)animated {
+    [super setValue:value animated:animated];
+    if (self.valueLabel) {
+        [self.valueLabel setText:[NSString stringWithFormat:@"%i", (int)value]];
+    }
+    
+    if (self.hasBeenTouched) {
+        if (!self.remainsBlue) {
+            UIColor* barColor;
+            if (value < 5) {
+                barColor = [UIColor colorWithRed:1.0f
+                                           green:((value) / self.maximumValue)*2
+                                            blue:((value) / self.maximumValue)*2
+                                           alpha:1.0f];
+            } else {
+                barColor = [UIColor colorWithRed:((self.maximumValue - value) / self.maximumValue)*2
+                                           green:1.0f
+                                            blue:((self.maximumValue - value) / self.maximumValue)*2
+                                           alpha:1.0f];
+            }
+            [self setMaximumTrackTintColor:barColor];
+            [self setMinimumTrackTintColor:barColor];
+        } else {
+            [self setMaximumTrackTintColor:[UIColor whiteColor]];
+            [self setMinimumTrackTintColor:[UIColor blueColor]];
+        }
+    } else {
+        [self setMaximumTrackTintColor:[UIColor whiteColor]];
+        [self setMinimumTrackTintColor:[UIColor whiteColor]];
+    }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    [self setAlpha:1.0f];
+    self.hasBeenTouched = YES;
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    [self setAlpha:0.65f];
+}
+
+@end

@@ -1,0 +1,248 @@
+//
+//  ViewController.m
+//  MyPsyche
+//
+//  Created by James Lockwood on 5/1/12.
+//  Copyright (c) 2012 Apps in House. All rights reserved.
+//
+
+#import "ViewController.h"
+#import "ProfileDataManager.h"
+#import "GoalEntry.h"
+#import "GoalScrollerView.h"
+#import "IntroViewController.h"
+#import "NotificationView.h"
+
+#define SCROLL_VIEW_PAGE_COUNT 2
+
+NSString* const kLastOpenedDateIdentifierKey = @"lastOpenedDate";
+NSString* const kLastQuoteDateIdentifierKey = @"lastQuoteDate";
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+@synthesize goalMarqueeView = _goalMarqueeView;
+@synthesize dataEntryButton = _dataEntryButton;
+@synthesize navItem = _navItem;
+@synthesize quoteButton = _quoteButton;
+@synthesize levelProgressView = _levelProgressView;
+@synthesize pointCountLabel = _pointCountLabel;
+@synthesize iconScrollView = _iconScrollView;
+@synthesize pageControl = _pageControl;
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"presentIntroScreen"]) {
+        IntroViewController* intro = segue.destinationViewController;
+        intro.mainController = self;
+    }
+}
+
+- (IBAction)goalButtonPressed:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"pushGoalController" sender:self];
+}
+
+- (void)quoteButtonPressed {
+    NSString* quoteString = [[ProfileDataManager sharedManager] getQuote];
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Reward Quote" message:quoteString delegate:self cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+    [alert show];
+    [self.navItem setRightBarButtonItem:nil animated:YES];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    UITouch* touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self.view];
+    if (CGRectContainsPoint(self.goalMarqueeView.frame, location)) {
+        [self performSegueWithIdentifier:@"pushGoalController" sender:self];
+    }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.quoteButton setTarget:self];
+    [self.quoteButton setAction:@selector(quoteButtonPressed)];
+    [self.navItem setRightBarButtonItem:nil animated:NO];
+    // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"corkboard"]]];
+    // Set two pages
+    [self.iconScrollView setContentSize:CGSizeMake(self.view.frame.size.width * SCROLL_VIEW_PAGE_COUNT, self.iconScrollView.frame.size.height)];
+    [self.pageControl setNumberOfPages:SCROLL_VIEW_PAGE_COUNT];
+    
+    [self.formNotification setShowsOnBlankString:NO];
+    [self.dialogueNotification setShowsOnBlankString:NO];
+}
+
+- (void)updateNotifications {
+    // Forms
+    if ([[ProfileDataManager sharedManager] clientAccessKey]) {
+        [[ProfileDataManager sharedManager] loadForms:^(NSArray *forms) {
+            NSMutableArray* array = [NSMutableArray arrayWithCapacity:[forms count]];
+            for (NSDictionary* form in forms) {
+                if ([[form objectForKey:@"completed"] isEqual:@"0"]) {
+                    [array addObject:form];
+                }
+            }
+            if ([array count] > 0) {
+                [self.formNotification setText:
+                 [NSString stringWithFormat:@"%i", [array count]]];
+            } else {
+                [self.formNotification setText:@""];
+            }
+        }];
+    }
+    
+    // Doctors -> Messages
+    if ([[ProfileDataManager sharedManager] clientAccessKey]) {
+        [[ProfileDataManager sharedManager] loadDoctors:^(NSArray *doctors) {
+            for (NSDictionary* doctor in doctors) {
+                NSNumber* doctorID = [doctor objectForKey:@"id"];
+                [[ProfileDataManager sharedManager] loadMessagesFromDoctor:doctorID withBlock:^(NSArray *messages) {
+                    if ([messages count] > 0) {
+                        NSMutableArray* array = [NSMutableArray arrayWithArray:messages];
+                        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+                        [formatter setDateFormat:@"yyyy-MM-dd hh-mm-ss"];
+                        [array sortUsingComparator:^NSComparisonResult(NSDictionary* obj1, NSDictionary* obj2) {
+                            NSString* date1str = [obj1 objectForKey:@"created"];
+                            NSString* date2str = [obj2 objectForKey:@"created"];
+                            return [[formatter dateFromString:date1str] compare:[formatter dateFromString:date2str]];
+                        }];
+                        NSDictionary* firstMessage = [array objectAtIndex:0];
+                        NSDictionary* firstMessageID = [[array objectAtIndex:0] objectForKey:@"id"];
+                        NSDictionary* storedMessageID = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredRecentMessage];
+                        NSNumber* clientID = [[NSUserDefaults standardUserDefaults] objectForKey:kClientIDStoreKey];
+                        NSString* sender_id = [firstMessage objectForKey:@"sender_id"];
+                        if (![sender_id isEqual:[NSString stringWithFormat:@"%d", [clientID integerValue]]] && ![firstMessageID isEqual:storedMessageID]) {
+                            [self.dialogueNotification setText:@"!"];
+                        } else {
+                            [self.dialogueNotification setText:@""];
+                        }
+                    }
+                }];
+            }
+        }];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // Set goal scrolling stuff
+    NSString* scrollString = @"";
+    int count = MIN([[ProfileDataManager sharedManager] goalEntryCount], GOAL_SCROLL_COUNT);
+    for (int i = 0; i < count; i++) {
+        GoalEntry* entry = [[ProfileDataManager sharedManager] goalEntryForIndex:i];
+        scrollString = [scrollString stringByAppendingFormat:@"%@ - %@",
+                        [entry titleString], [entry stringFromDueDate]];
+        if (i != count-1) {
+            scrollString = [scrollString stringByAppendingFormat:@" | "];
+        }
+    }
+    if (count == 0) {
+        scrollString = @"(No Current Goals)";
+    }
+    [self.goalMarqueeView.scrollLabel setText:scrollString];
+    [self.goalMarqueeView.scrollLabel setCenter:CGPointMake(self.goalMarqueeView.center.x+400, self.goalMarqueeView.frame.size.height/2)];
+    [self.formNotification setText:@""];
+    [self.dialogueNotification setText:@""];
+    
+    if ([[ProfileDataManager sharedManager] clientAccessKey]) {
+        [self updateNotifications];
+    } else {
+        [[ProfileDataManager sharedManager] loadUserAccessToken:^(NSString *key) {
+            [self updateNotifications];
+        }];
+    }
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSDate* todayDate = [NSDate date];
+    NSDate* savedOpenDate = [defaults objectForKey:kLastOpenedDateIdentifierKey];
+    NSDate* savedQuoteDate = [defaults objectForKey:kLastQuoteDateIdentifierKey];
+    
+    NSDateComponents* todayComps = [ProfileDataManager dateComponentsFromDate:todayDate];
+    NSDateComponents* savedOpenComps = [ProfileDataManager dateComponentsFromDate:savedOpenDate];
+    NSDateComponents* savedQuoteComps = [ProfileDataManager dateComponentsFromDate:savedQuoteDate];
+    
+    // Get saved date, check to see if it is today
+    if (savedOpenComps) {
+        if (![ProfileDataManager isDateComponentsEqual:todayComps toComps:savedOpenComps]) {
+            // Push the data entry screen
+            [self performSegueWithIdentifier:@"pushDataEntry" sender:self.dataEntryButton];
+        }
+    } else {
+        // First time opening App on this current day
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:kHasShownIntroScreenKey]) {
+            // Hasn't shown the intro screen
+            [self performSegueWithIdentifier:@"presentIntroScreen" sender:self];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHasShownIntroScreenKey];
+        } else if (![[NSUserDefaults standardUserDefaults] boolForKey:kHasShownAccountInfoKey]) {
+            // Hasn't shown the account info
+            [self performSegueWithIdentifier:@"pushAccountController" sender:self];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHasShownAccountInfoKey];
+        } else {
+            // Show the data entry screen
+            [self performSegueWithIdentifier:@"pushDataEntry" sender:self.dataEntryButton];
+        }
+    }
+    
+    // Present a quote if they have three points
+    if (savedQuoteComps) {
+        if (![ProfileDataManager isDateComponentsEqual:todayComps toComps:savedQuoteComps]) {
+            [[ProfileDataManager sharedManager] addPsychPoints:1];
+            [defaults setObject:todayDate forKey:kLastQuoteDateIdentifierKey];
+        }
+    } else {
+        [[ProfileDataManager sharedManager] addPsychPoints:1];
+        [defaults setObject:todayDate forKey:kLastQuoteDateIdentifierKey];
+    }
+    
+    // Set up quote
+    if ([[[ProfileDataManager sharedManager] currentPsychPoints] intValue] >= 3) {
+        [self.navItem setRightBarButtonItem:self.quoteButton animated:YES];
+        [[ProfileDataManager sharedManager] setCurrentPsychPoints:[NSNumber numberWithInt:0]];
+    }
+    
+    [defaults setObject:todayDate forKey:kLastOpenedDateIdentifierKey];
+    [defaults synchronize];
+    
+    // Check for challenge completions!
+    [[ProfileDataManager sharedManager] checkAllChallengeObjects];
+    
+    // Set level progress
+    float progress = [[ProfileDataManager sharedManager] getPsychLevelProgress];
+    [self.levelProgressView setProgress:0.0f animated:NO];
+    [self.levelProgressView setProgress:progress animated:YES];
+    [self.levelProgressView setProgressTintColor:[UIColor orangeColor]];
+    [self.pointCountLabel setText:
+     [NSString stringWithFormat:@"%i", (int)([[ProfileDataManager sharedManager] getPsychLevelProgress]*3.0f)]];
+    
+    // Animate goals
+    [UIView animateWithDuration:8.0f delay:0.0f options:(UIViewAnimationOptionCurveLinear|UIViewAnimationOptionRepeat) animations:^{
+        [self.goalMarqueeView.scrollLabel setCenter:CGPointMake(self.goalMarqueeView.center.x - 400, self.goalMarqueeView.scrollLabel.center.y)];
+    } completion:^(BOOL finished){
+        // Nothing
+    }];
+    
+    // SAFELY SAVE FOR NOW!
+    [[ProfileDataManager sharedManager] saveDataToDisk];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Scroll View Delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGRect frame = self.view.frame;
+    float roundedValue = round(scrollView.contentOffset.x / frame.size.width);
+    self.pageControl.currentPage = roundedValue;
+}
+
+
+@end

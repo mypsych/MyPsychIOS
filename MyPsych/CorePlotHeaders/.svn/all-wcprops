@@ -1,0 +1,467 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/mypsych_aih/!svn/ver/3/trunk/MyPsych/MyPsych/CorePlotHeaders
+END
+CPTShadow.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTShadow.h
+END
+CPTFill.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTFill.h
+END
+CPTDataSourceTestCase.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTDataSourceTestCase.h
+END
+CPTGradient.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTGradient.h
+END
+CPTGraph.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTGraph.h
+END
+CPTLimitBand.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTLimitBand.h
+END
+CPTBarPlot.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTBarPlot.h
+END
+CPTAxis.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTAxis.h
+END
+CPTPlotSymbol.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlotSymbol.h
+END
+CPTMutablePlotRange.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTMutablePlotRange.h
+END
+CPTGridLineGroup.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTGridLineGroup.h
+END
+CPTAnnotation.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTAnnotation.h
+END
+CPTXYPlotSpace.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTXYPlotSpace.h
+END
+CPTLayer.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTLayer.h
+END
+CPTAxisSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTAxisSet.h
+END
+CPTMutableLineStyle.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTMutableLineStyle.h
+END
+CPTBorderedLayer.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTBorderedLayer.h
+END
+CPTPlatformSpecificDefines.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlatformSpecificDefines.h
+END
+CPTGraphHostingView.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTGraphHostingView.h
+END
+CPTMutableNumericData+TypeConversion.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTMutableNumericData+TypeConversion.h
+END
+CPTColorSpace.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTColorSpace.h
+END
+CPTPlotRange.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlotRange.h
+END
+CPTPlotGroup.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlotGroup.h
+END
+CPTNumericDataType.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTNumericDataType.h
+END
+CPTLegend.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTLegend.h
+END
+CPTMutableShadow.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTMutableShadow.h
+END
+CPTPieChart.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPieChart.h
+END
+CPTPlatformSpecificCategories.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlatformSpecificCategories.h
+END
+CPTXYAxisSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTXYAxisSet.h
+END
+CPTTheme.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTTheme.h
+END
+CPTScatterPlot.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTScatterPlot.h
+END
+CorePlot-CocoaTouch.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CorePlot-CocoaTouch.h
+END
+NSCoderExtensions.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/NSCoderExtensions.h
+END
+CPTMutableNumericData.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTMutableNumericData.h
+END
+CPTLayerAnnotation.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTLayerAnnotation.h
+END
+CPTPlotArea.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlotArea.h
+END
+CPTLineStyle.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTLineStyle.h
+END
+CPTTestCase.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTTestCase.h
+END
+CPTTextStylePlatformSpecific.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTTextStylePlatformSpecific.h
+END
+CPTImage.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTImage.h
+END
+CPTTimeFormatter.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTTimeFormatter.h
+END
+CPTAnimationPeriod.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTAnimationPeriod.h
+END
+CPTXYAxis.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTXYAxis.h
+END
+CPTDerivedXYGraph.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTDerivedXYGraph.h
+END
+CPTPlotSpace.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlotSpace.h
+END
+CPTRangePlot.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTRangePlot.h
+END
+CPTNumericData.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTNumericData.h
+END
+CPTCalendarFormatter.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTCalendarFormatter.h
+END
+CPTResponder.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTResponder.h
+END
+NSNumberExtensions.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/NSNumberExtensions.h
+END
+CPTTradingRangePlot.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTTradingRangePlot.h
+END
+CPTAnnotationHostLayer.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTAnnotationHostLayer.h
+END
+CPTConstraints.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTConstraints.h
+END
+CPTLineCap.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTLineCap.h
+END
+CPTDefinitions.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTDefinitions.h
+END
+CPTColor.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTColor.h
+END
+CPTMutableTextStyle.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTMutableTextStyle.h
+END
+CPTGridLines.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTGridLines.h
+END
+CPTAxisLabelGroup.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTAxisLabelGroup.h
+END
+CPTTextLayer.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTTextLayer.h
+END
+CPTXYGraph.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTXYGraph.h
+END
+CPTPlotAreaFrame.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlotAreaFrame.h
+END
+CPTPlatformSpecificFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlatformSpecificFunctions.h
+END
+CPTPlotSpaceAnnotation.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlotSpaceAnnotation.h
+END
+CPTAnimationOperation.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTAnimationOperation.h
+END
+CPTAxisLabel.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTAxisLabel.h
+END
+CPTTextStyle.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTTextStyle.h
+END
+CPTAxisTitle.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTAxisTitle.h
+END
+mainpage.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/mainpage.h
+END
+CPTUtilities.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTUtilities.h
+END
+CPTPathExtensions.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPathExtensions.h
+END
+CPTPlot.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTPlot.h
+END
+CPTNumericData+TypeConversion.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTNumericData+TypeConversion.h
+END
+CPTAnimation.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTAnimation.h
+END
+CPTLegendEntry.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTLegendEntry.h
+END
+CPTExceptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/CPTExceptions.h
+END
+NSDecimalNumberExtensions.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/mypsych_aih/!svn/ver/34/trunk/MyPsych/MyPsych/CorePlotHeaders/NSDecimalNumberExtensions.h
+END
